@@ -18,6 +18,11 @@ mongoose.connect('mongodb://localhost/TodoDb', {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// add express middleware to intercept incoming request and present better error messages
+app.use(function(req, res) {
+    res.status(404).send({ url: req.originalUrl + ' not found' });
+});
+
 // routes config
 routes(app); // register the routes
 
