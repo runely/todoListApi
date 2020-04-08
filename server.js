@@ -8,7 +8,10 @@ var port = process.env.PORT || 3000;
 
 // mongoose instance connection url
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/TodoDb');
+mongoose.connect('mongodb://localhost/TodoDb', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // bodyParser config
 app.use(bodyParser.urlencoded({ extended: true }));
